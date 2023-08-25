@@ -1,12 +1,12 @@
-import Button from "./Button"
-import CartWidget from "./CartWidget"
+import Button from "../Button"
+import CartWidget from "../CartWidget/CartWidget"
 import "./NavBar.css"
+import imagenprincipal from "../assets/logo.jpg"
 
 export function NavBar () {
     return (
         <nav className="navbar">
-        <h3 >TIENDA OFICIAL DE JOGGERS</h3>
-        <img src="../assets/logo.jpg" alt="" />
+        <img src={imagenprincipal} />
         <Button texto="JOGGERS"/>
         <Button texto="CAMISAS"/>
         <Button texto="GORRAS"/>
