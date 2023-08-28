@@ -1,4 +1,4 @@
-import { Container, NavDropdown } from "react-bootstrap"
+import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap"
 import Button from "../Button"
 import CartWidget from "../CartWidget/CartWidget"
 import "./NavBar.css"
@@ -6,12 +6,12 @@ import {NavLink} from "react-router-dom"
 
 export function NavBar () {
     return (
-        <NavBar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary">
 
             <Container>
-                <NavBar.Brand as={NavLink} to="/" href="#home">Coder Shop!</NavBar.Brand>
-                <NavBar.Toggle aria-controls="basic-navbar-nav"/>
-                <NavBar.Collapse id="basic-navbar-nav">
+                <Navbar.Brand as={NavLink} to="/" href="#home">Coder Shop!</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <img src={"https://i.postimg.cc/zGxJ2NBY/whatsapp-wavye26aea27-b175-49f0-8d1b-5171556ea4f3.jpg'"} />
 
@@ -29,9 +29,9 @@ export function NavBar () {
                         </NavDropdown>
                     </Nav>
                     <CartWidget/>
-                </NavBar.Collapse>
+                </Navbar.Collapse>
             </Container>
-        </NavBar>
+        </Navbar>
     )
 }
 //         <nav className="navbar">

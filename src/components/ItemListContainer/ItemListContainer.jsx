@@ -2,11 +2,10 @@ import React,{ useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList"
 import {getProducts} from "../../mock/data"
 import { useParams } from "react-router-dom";
- import ItemCount from "../ItemCount/ItemCount";
 
 const ItemListContainer = ({greeting}) => {
     const [productos,setProductos]= useState([])
-    const [loading,setLo♠ading]= useState(false)
+    const [loading,setLoading]= useState(false)
     const {categoryId}=useParams()
 
 
