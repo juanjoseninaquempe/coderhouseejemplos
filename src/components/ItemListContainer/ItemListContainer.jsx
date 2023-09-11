@@ -1,12 +1,14 @@
-import React,{ useEffect, useState } from "react";
+import React,{ useContext, useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList"
 import {getProducts} from "../../mock/data"
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const ItemListContainer = ({greeting}) => {
     const [productos,setProductos]= useState([])
     const [loading,setLoading]= useState(false)
     const {categoryId}=useParams()
+
 
 
         useEffect(() => {
@@ -22,6 +24,7 @@ const ItemListContainer = ({greeting}) => {
                 .catch((error) => console.log(error))
                 .finally(() => setLoading(false))
         },[categoryId])
+
     return (
         <div >
             {

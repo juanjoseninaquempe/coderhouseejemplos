@@ -1,12 +1,17 @@
-import React,{ useEffect, useState } from "react"
+import React,{ useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getItem } from "../../mock/data"
 import ItemDetail from "../ItemDetail/ItemDetail"
+import { CartContext } from "../../context/CartContext"
 
 const ItemDetailContainer = () => {
     const [producto,setProducto] = useState({})
     const [loader, setLoader] = useState(false)
+    const [added,setAdded] = useState(false)
+
     const {id}= useParams()
+
+    const { addToCart } = useContext(CartContext)
 
     useEffect (() => {
         setLoader(true)
@@ -16,9 +21,14 @@ const ItemDetailContainer = () => {
         .finally(()=> setLoader(false))
     },[])
 
+    const onAdd = (contador) => {
+        addToCart(producto,contador)
+        setAdded(true)
+    }
+
     return (
         <div>
-            { loader ? <p>Cargando ...</p> : <ItemDetail producto={producto} />}
+            { loader ? <p>Cargando ...</p> : <ItemDetail onAdd={onAdd} producto={producto} added={added}/>}
         </div>
     )
 }
