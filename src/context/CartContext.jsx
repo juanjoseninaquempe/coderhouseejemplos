@@ -6,6 +6,7 @@ const CartProvider = ({ children }) => {
 
     const [cartArray,setCartArray] = useState([])
 
+
     const addToCart = (producto, contador ) => {
         console.log(`Agregaste ${producto.title}, cantidad: ${contador} `)
         const newObj = {
@@ -27,15 +28,14 @@ const CartProvider = ({ children }) => {
         return cartArray.some(element => element.id === id)
     }
 
-    const value = {
-        cartArray,
-        addToCart,
-        deleteItem,
-        clearCart
-    }
 
     return (
-        <CartContext.Provider value={{value}}>
+        <CartContext.Provider value={{
+            cartArray,
+            addToCart,
+            deleteItem,
+            clearCart
+        }}>
         {children}
         </CartContext.Provider>
     )

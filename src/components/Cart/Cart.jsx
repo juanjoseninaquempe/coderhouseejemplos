@@ -1,14 +1,14 @@
 import React, { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 
-function Cart  ()  {
+const Cart = () =>  {
 
     const { cartArray } = useContext(CartContext)
 
     return 
     (
     <div>
-        {cartArray.map(prods => <p>{prods.item.title}</p> )}
+        {cartArray.map(prods => <p>{prods.item.name}</p> )}
     </div>
     )
 }

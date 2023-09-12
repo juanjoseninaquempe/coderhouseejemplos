@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from "react-router-dom"
+import { CartContext } from "../../context/CartContext"
+
 
 const ItemDetail = ({producto}) => {
+
+    const {addToCart} = useContext(CartContext)
+
     const onAdd = (cantidad) => {
+        addToCart(cantidad)
         console.log(`Compraste ${cantidad} productos`)
     }
     return (
