@@ -1,24 +1,24 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-}
 
 
-const CartItem = ({ item , handleDelete }) => {
+
+const CartItem = ({ producto , deleteItem }) => {
     return (
         <Card body>
             <Container>
                 <Row>
                     <Col>
-                    {item.producto.name}
+                    {producto.item.name}
                     </Col>
                     <Col>
-                    {item.producto.quant}
+                    Cantidad : {producto.count}
                     </Col>
                     <Col>
-                    {item.producto.price}
+                    $ {producto.item.price}
                     </Col>
                     <Col>
-                    <Button variant="danger" onClick={handleDelete}>Delete</Button>
+                    <Button variant="danger" onClick={() => deleteItem(producto.item.id) }>Delete</Button>   
                     </Col>
                 </Row>
             </Container>

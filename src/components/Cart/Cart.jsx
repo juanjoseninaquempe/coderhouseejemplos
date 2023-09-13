@@ -1,14 +1,20 @@
-import React, { useContext } from "react"
+import React from "react"
+import {useContext} from "react"
 import { CartContext } from "../../context/CartContext"
+ import CartItem from "../CartItem/CartItem";
 
 const Cart = () =>  {
 
-    const { cartArray } = useContext(CartContext)
+    const { cartArray,deleteItem } = useContext(CartContext);
 
-    return 
-    (
+
+
+    return  (
     <div>
-        {cartArray.map(prods => <p>{prods.item.name}</p> )}
+        {/* {cartArray.map(prods => <p>{prods.item.name} </p> )} */}
+
+        {cartArray.map(prods => <CartItem key={prods.item.id} producto={prods} deleteItem={deleteItem} /> )}
+
     </div>
     )
 }

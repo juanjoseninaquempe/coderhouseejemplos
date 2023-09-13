@@ -8,15 +8,22 @@ const CartProvider = ({ children }) => {
 
 
     const addToCart = (producto, contador ) => {
-        console.log(`Agregaste ${producto.title}, cantidad: ${contador} `)
-        const newObj = {
-            item: producto, 
-            contador 
+        if (isInCart(producto.id)){
+            // const updatedObj = {
+
+            // }
+            console.log("ya esta el producto")
+        }else {
+            console.log(`Agregaste ${producto.name}, cantidad: ${contador} `)
+            const newObj = {
+                item: producto, 
+                contador 
+            }
+            setCartArray([...cartArray, newObj])
         }
-        setCartArray([...cartArray, newObj])
     }
     const deleteItem = (id) => {
-        const updatedCart = cartArray.filter(element => element.id !== id)
+         const updatedCart = cartArray.filter(element => element.item.id !== id)
         setCartArray(updatedCart)
     }
 
@@ -25,7 +32,7 @@ const CartProvider = ({ children }) => {
     }
 
     const isInCart = (id) => {
-        return cartArray.some(element => element.id === id)
+        return cartArray.some(element => element.item.id === id)
     }
 
 
