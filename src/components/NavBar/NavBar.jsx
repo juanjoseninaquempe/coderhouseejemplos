@@ -2,7 +2,7 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap"
 import Button from "../Button"
 import CartWidget from "../CartWidget/CartWidget"
 import "./NavBar.css"
-import {NavLink} from "react-router-dom"
+import {Link, NavLink} from "react-router-dom"
 
 export function NavBar () {
     return (

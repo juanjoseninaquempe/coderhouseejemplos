@@ -7,13 +7,12 @@ const CartProvider = ({ children }) => {
     const [cartArray,setCartArray] = useState([])
 
 
-    const addToCart = (producto, contador ) => {
+    const addToCart = (producto, contador ) =>  {  //cantidad quedo como contador
         if (isInCart(producto.id)){
-            // const updatedObj = {
-
-            // }
+            cartArray.findIndex(viejacantidaddelmismoProducto => viejacantidaddelmismoProducto.contador+=contador)
             console.log("ya esta el producto")
-        }else {
+             }
+        else {
             console.log(`Agregaste ${producto.name}, cantidad: ${contador} `)
             const newObj = {
                 item: producto, 
@@ -35,13 +34,18 @@ const CartProvider = ({ children }) => {
         return cartArray.some(element => element.item.id === id)
     }
 
+    const cantidadEnCarrito = () => {
+        return cartArray.reduce((acc,prod) => acc + prod.contador,0)
+    }
+
 
     return (
         <CartContext.Provider value={{
             cartArray,
             addToCart,
             deleteItem,
-            clearCart
+            clearCart,
+            cantidadEnCarrito
         }}>
         {children}
         </CartContext.Provider>

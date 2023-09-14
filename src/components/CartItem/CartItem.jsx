@@ -12,10 +12,10 @@ const CartItem = ({ producto , deleteItem }) => {
                     {producto.item.name}
                     </Col>
                     <Col>
-                    Cantidad : {producto.count}
+                    Cantidad : {producto.contador}
                     </Col>
                     <Col>
-                    $ {producto.item.price}
+                   s $ {producto.item.price}
                     </Col>
                     <Col>
                     <Button variant="danger" onClick={() => deleteItem(producto.item.id) }>Delete</Button>   

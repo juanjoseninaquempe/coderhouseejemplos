@@ -5,11 +5,13 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/Cart/Cart';
 import CartProvider from './context/CartContext';
+import { useState } from 'react';
 
 function App() {
   
+
   return (
-    <CartProvider>
+    <CartProvider >
       <BrowserRouter>
         <NavBar/>
           <Routes>

@@ -9,7 +9,7 @@ const ItemDetail = ({producto}) => {
     const {addToCart} = useContext(CartContext)
 
     const onAdd = (cantidad) => {
-        addToCart(producto)
+        addToCart(producto,cantidad)
         console.log(`Compraste ${cantidad} productos`)
     }
     return (
