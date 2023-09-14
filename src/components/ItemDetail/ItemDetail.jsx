@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
@@ -8,9 +8,22 @@ const ItemDetail = ({producto}) => {
 
     const {addToCart} = useContext(CartContext)
 
-    const onAdd = (cantidad) => {
-        addToCart(producto,cantidad)
-        console.log(`Compraste ${cantidad} productos`)
+    const [count,setCount] = useState (1)
+
+    const sumar = () => {
+        if( count < producto.stock){
+            setCount(count +1)
+        }
+    }
+    const restar = () => {
+        if(count > 0){
+            setCount(count -1)
+        }
+    }
+
+    const onAdd = (count) => {
+        addToCart(producto,count)
+        console.log(`Compraste ${count} productos`)
     }
     return (
         <div className="d-flex flex-column align-items-center">
@@ -18,7 +31,7 @@ const ItemDetail = ({producto}) => {
             <img src={producto.img} alt={producto.name} />
             <p>{producto.description} </p>
             <p>${producto.price} </p>
-            <ItemCount initial={1} stock={producto.stock} onAdd={onAdd} />
+            <ItemCount count={count} restar={restar} sumar={sumar} onAdd={onAdd} />
             <Link to='/cart' className='btn btn-outline-secondary m-3'>Ir al Carrito</Link>
         </div>
     )
