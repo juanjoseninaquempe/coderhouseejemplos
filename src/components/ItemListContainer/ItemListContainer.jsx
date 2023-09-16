@@ -4,22 +4,29 @@ import {getProducts} from "../../mock/data"
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
+import { getDocs,collection,query,where } from "firebase/firestore"
+import { firestore } from "../../services/firebase/firebaseConfig";
+
 const ItemListContainer = ({greeting}) => {
     const [productos,setProductos]= useState([])
     const [loading,setLoading]= useState(false)
     const {categoryId}=useParams()
 
-
-
         useEffect(() => {
+
             setLoading(true)
-                getProducts()
-                .then((res)=> {
-                    if(categoryId){
-                        setProductos(res.filter((item) => item.category === categoryId))
-                    }else{
-                        setProductos(res)
-                    }
+
+            const collectionRef = categoryId
+                ? query(collection(firestore,"items"),where( "category","==",categoryId ))
+                : collection(firestore,"items")
+
+                getDocs(collectionRef)
+                .then((res) => { 
+                        const productsAdated = res.docs.map( doc => {
+                            const data = doc.data()
+                            return {id: doc.id, ...data }
+                    })
+                        setProductos(productsAdated)
                 })
                 .catch((error) => console.log(error))
                 .finally(() => setLoading(false))

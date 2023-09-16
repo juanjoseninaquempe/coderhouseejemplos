@@ -9,8 +9,16 @@ const CartProvider = ({ children }) => {
 
     const addToCart = (producto, contador ) =>  {  //cantidad quedo como contador
         if (isInCart(producto.id)){
-            cartArray.findIndex(viejacantidaddelmismoProducto => viejacantidaddelmismoProducto.contador+=contador)
+            const arrayActualizado = cartArray.map(itemCart => {
+                if (itemCart.item.id === producto.id) {
+                    return { ...itemCart, contador: itemCart.contador + contador }
+                } else {
+                    return itemCart
+                }
+            })
+            // cartArray.findIndex(viejacantidaddelmismoProducto => viejacantidaddelmismoProducto.contador+=contador)
             console.log("ya esta el producto")
+            setCartArray(arrayActualizado)
              }
         else {
             console.log(`Agregaste ${producto.name}, cantidad: ${contador} `)
@@ -35,8 +43,12 @@ const CartProvider = ({ children }) => {
     }
 
     const cantidadEnCarrito = () => {
-        return cartArray.reduce((acc,prod) => acc + prod.contador,0)
+        return cartArray.reduce((acc,prod) => acc = acc + prod.contador,0)
     }
+
+     const totalPrecio = () => {
+         return cartArray.reduce((acc,prod) => acc= acc + (prod.contador*prod.item.price),0 )
+     }
 
 
     return (
@@ -45,7 +57,8 @@ const CartProvider = ({ children }) => {
             addToCart,
             deleteItem,
             clearCart,
-            cantidadEnCarrito
+            cantidadEnCarrito,
+            totalPrecio
         }}>
         {children}
         </CartContext.Provider>

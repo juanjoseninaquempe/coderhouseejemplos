@@ -4,9 +4,13 @@ import { getItem } from "../../mock/data"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { CartContext } from "../../context/CartContext"
 
+import {getDoc, doc} from "firebase/firestore"
+import { firestore } from "../../services/firebase/firebaseConfig"
+
 const ItemDetailContainer = () => {
     const [producto,setProducto] = useState({})
     const [loader, setLoader] = useState(false)
+
     const [added,setAdded] = useState(false)
 
     const {id}= useParams()
@@ -15,8 +19,15 @@ const ItemDetailContainer = () => {
 
     useEffect (() => {
         setLoader(true)
-        getItem(id)
-        .then((res) => setProducto(res))
+
+        const docRef = doc(firestore, "items", id )
+
+        getDoc(docRef)
+        .then((res) =>  {
+            const data = res.data()
+            const productAdated = {id: res.id, ...data}
+            setProducto(productAdated)
+        })
         .catch((error) => console.log(error))
         .finally(()=> setLoader(false))
     },[])

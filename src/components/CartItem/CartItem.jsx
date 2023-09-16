@@ -3,7 +3,8 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 
 
-const CartItem = ({ producto , deleteItem }) => {
+ const CartItem = ({ producto , deleteItem,totalPrecio}) => {
+
     return (
         <Card body>
             <Container>
@@ -15,11 +16,11 @@ const CartItem = ({ producto , deleteItem }) => {
                     Cantidad : {producto.contador}
                     </Col>
                     <Col>
-                   s $ {producto.item.price}
+                    $ {producto.item.price}
                     </Col>
                     <Col>
                     <Button variant="danger" onClick={() => deleteItem(producto.item.id) }>Delete</Button>   
-                    </Col>
+                     </Col>
                 </Row>
             </Container>
         </Card>
