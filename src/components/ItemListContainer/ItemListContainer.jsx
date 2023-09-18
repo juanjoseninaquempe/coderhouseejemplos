@@ -36,8 +36,9 @@ const ItemListContainer = ({greeting}) => {
         <div >
             {
             loading ? <p>Cargando ...</p>
-            : <div>
-                <h1>{greeting} <span>{categoryId && categoryId} </span> </h1>
+            : <div  >
+                <h1><span>{categoryId && categoryId} </span> </h1>
+                <img className="logo" src="https://i.postimg.cc/rsKLcsVQ/icons8-welcome-64.png" alt="bienvenidos" />
                 <ItemList productos = {productos} />
             </div>
              }

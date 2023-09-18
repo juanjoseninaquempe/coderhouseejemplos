@@ -3,12 +3,13 @@ import { CartContext } from "../../context/CartContext";
 import { useForm } from "react-hook-form";
 import { collection, addDoc} from "firebase/firestore";
 import { firestore } from "../../services/firebase/firebaseConfig"; 
+import { Button } from "react-bootstrap";
 
 const Checkout = () => {
 
     const [pedidoId, setPedidoId] = useState("")
 
-    const { cartArray,deleteItem,totalPrecio,clearCart } = useContext(CartContext);
+    const { cartArray,totalPrecio,clearCart } = useContext(CartContext);
 
     const { register, handleSubmit } = useForm()
     const comprar = (data) => {
@@ -47,7 +48,7 @@ const Checkout = () => {
             <input type="email" placeholder="Ingresá tu e-mail" {...register("email")} />
             <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
 
-            <button className="enviar" type="submit">Comprar</button>
+            <Button className="enviar" type="submit">Comprar</Button>
 
         </form>
     </div>

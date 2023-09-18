@@ -5,8 +5,7 @@
  import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
-// import { Badge } from "react-bootstrap"
-// import { BsCart3 } from "react-icons/bs"
+  import Button from "@mui/material/Button" 
 
 function CartWidget () {
 
@@ -14,9 +13,11 @@ function CartWidget () {
 
     return (
          <div>
-            <Link className="menu-link" to="/carrito" style={ {display: cantidadEnCarrito() >  0 ? "block" : "none"} } >
-                carrito
+            <Link className="menu-link" to="/cart" style={ {display: cantidadEnCarrito() >  0 ? "block" : "none"} } >
+                <Button>
                 <span className="numerito">{cantidadEnCarrito()}</span>
+                <img src="https://i.postimg.cc/R0nZBP0j/carrito-svg.gif" alt="carrito" />
+                </Button>
             </Link>
          </div>
     )

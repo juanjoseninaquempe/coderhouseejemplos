@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import {useForm} from "react-hook-form";
 
 const Contacto = () => {
@@ -17,7 +18,7 @@ const Contacto = () => {
             <input type="email" placeholder="Ingresá tu e-mail" {...register("email")} />
             <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
 
-            <button className="enviar" type="submit">Enviar</button>
+            <Button className="enviar" type="submit">Enviar</Button>
 
         </form>
     </div>
