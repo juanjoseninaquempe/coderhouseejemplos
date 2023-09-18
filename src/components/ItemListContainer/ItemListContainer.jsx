@@ -15,7 +15,7 @@ const ItemListContainer = ({greeting}) => {
         useEffect(() => {
 
             setLoading(true)
-
+            //si tiene categoria osea categoryId es query(collection(firestore,"items"),where( "category","==",categoryId )y si no tiene eso serian todos los componentes collection(firestore,"items") 
             const collectionRef = categoryId
                 ? query(collection(firestore,"items"),where( "category","==",categoryId ))
                 : collection(firestore,"items")

@@ -27,6 +27,8 @@ export function NavBar () {
                                 Todos los productos
                             </NavDropdown.Item>
                         </NavDropdown>
+                        <Nav.Link  as={NavLink} to="/contacto" >contacto</Nav.Link>
+                        
                     </Nav>
                     <CartWidget/>
                 </Navbar.Collapse>

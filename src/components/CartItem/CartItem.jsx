@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 
 
- const CartItem = ({ producto , deleteItem,totalPrecio}) => {
+ const CartItem = ({ producto , deleteItem}) => {
 
     return (
         <Card body>
